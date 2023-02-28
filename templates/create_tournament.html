@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Add tournament</title>
+  </head>
+  <body>
+    <h1>Add tournament</h1>
+    <form action="/add-tournament" method="POST">
+      <label for="code">Tournament code:</label>
+      <input type="text" name="code" id="code"><br><br>
+      <label for="start_date">Start:</label>
+      <input type="datetime-local" name="start_date" id="start_date"><br><br>
+      <label for="end_date">End:</label>
+      <input type="datetime-local" name="end_date" id="end_date"><br><br>
+      <input type="submit" value="Add tournament">
+    </form>
+  </body>
+</html>
