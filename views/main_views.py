@@ -8,10 +8,10 @@ def index():
 
 
 @bp.route('/declare-tournament')
-def join_tournament_page():
+def create_tournament_page():
     return render_template('create_tournament.html')
 
 
 @bp.route('/join-tournament')
-def create_tournament_page():
+def join_tournament_page():
     return render_template('join_tournament.html')
