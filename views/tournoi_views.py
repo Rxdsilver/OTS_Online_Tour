@@ -18,15 +18,18 @@ def add_player():
     code = request.form['code']
     name = request.form['name']
     team = request.form['team']
-    tournoi = Tournament.query.filter_by(code=code).first()
-    joueur = Player(name=name, team=team, tournoi=tournoi)
-    db.session.add(joueur)
+    player = Player(name=name, team=team, code=code)
+    db.session.add(player)
     db.session.commit()
     return 'You successfully joined the tournament!'
 
-@bp.route('/tournament', methods=['GET'])
-def tournoi():
-    code = request.args.get('code')
-    tournoi = Tournament.query.filter_by(code=code).first()
-    joueurs = Player.query.filter_by(tournoi=tournoi).all()
-    return render_template('tournament.html', tournoi=tournoi, joueurs=joueurs)
+@bp.route('/<int:tournament_id>/players')
+def tournament_players(tournament_id):
+    tournament = Tournament.query.get_or_404(tournament_id)
+    players = Player.query.filter_by(code=tournament.code).all()
+    return render_template('tournament_players.html', tournament=tournament, players=players)
+
+@bp.route('/tournament-list')
+def tournament_list():
+    tournaments = Tournament.query.all()
+    return render_template('tournament_list.html', tournaments=tournaments)

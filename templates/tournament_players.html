@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Players list ({{ tournament.name }})</title>
+</head>
+<body>
+    <h1>Players list ({{ tournament.name }})</h1>
+    <ul>
+        {% for player in players %}
+        <li><a href="{{ url_for('tournament_players', tournament_id=tournament.id) }}">{{ tournament.name }}</a> ({{ tournament.code }}) - {{ tournament.date.strftime('%d/%m/%Y') }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tournament list</title>
+</head>
+<body>
+    <h1>Tournament list</h1>
+    <ul>
+        {% for tournament in tournaments %}
+        <li>{{ tournament.name }} ({{ tournament.code }}) - {{ tournament.date.strftime('%d/%m/%Y') }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
